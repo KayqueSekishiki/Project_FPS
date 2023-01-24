@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Indoor Stage 1.unity
+    guid: 225ccefde64084747b8cc5087edbfb58
   m_configObjects: {}
