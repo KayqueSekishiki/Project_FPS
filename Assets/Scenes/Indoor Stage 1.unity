@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 100
   totalBullets: 30
-  bulletsLeft: 0
+  bulletsLeft: 100
   currentBullets: 0
   fireRate: 0.1
   shootPoint: {fileID: 1532327378}

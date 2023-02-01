@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 {
     public float range = 100f;
     public int totalBullets = 30;
-    public int bulletsLeft;
+    public int bulletsLeft = 100;
     public int currentBullets;
 
     public float fireRate = 1f;
@@ -16,6 +16,8 @@ public class Weapon : MonoBehaviour
     public ParticleSystem fireEffect;
 
     private Animator anim;
+
+    private bool isReloading;
 
 
     void Start()
@@ -33,9 +35,21 @@ public class Weapon : MonoBehaviour
             {
                 Fire();
             }
+            else if (bulletsLeft > 0)
+            {
+                DoReload();
+            }
         }
 
-        if (firetimer < fireRate)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (currentBullets < totalBullets && bulletsLeft > 0)
+            {
+                DoReload();
+            }
+        }
+
+        if (firetimer < fireRate || isReloading || currentBullets <= 0)
         {
             firetimer += Time.deltaTime;
         }
@@ -52,12 +66,42 @@ public class Weapon : MonoBehaviour
 
         if (Physics.Raycast(shootPoint.position, shootPoint.transform.forward, out hit, range))
         {
-           // Debug.Log(hit.transform.name);
+            // Debug.Log(hit.transform.name);
         }
 
         anim.CrossFadeInFixedTime("Fire", 0.01f);
         fireEffect.Play();
         currentBullets--;
         firetimer = 0f;
+    }
+
+    private void FixedUpdate()
+    {
+        AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
+        isReloading = info.IsName("Reload");
+    }
+
+    private void DoReload()
+    {
+        if (isReloading)
+        {
+            return;
+        }
+
+        anim.CrossFadeInFixedTime("Reload", 0.01f);
+    }
+
+    public void Reload()
+    {
+        if (bulletsLeft <= 0)
+        {
+            return;
+        }
+
+        int bulletsToLoad = totalBullets - currentBullets;
+        int bulletsToDeduct = (bulletsLeft >= bulletsToLoad) ? bulletsToLoad : bulletsLeft;
+
+        bulletsLeft -= bulletsToDeduct;
+        currentBullets += bulletsToDeduct;
     }
 }
