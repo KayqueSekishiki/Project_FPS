@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [Header("Properties")]
+    public int damage;
     public float range = 100f;
     public int totalBullets = 30;
     public int bulletsLeft = 100;
     public int currentBullets;
-
     public float fireRate = 1f;
     private float firetimer;
 
+    [Header("Shoot Config")]
     public Transform shootPoint;
     public ParticleSystem fireEffect;
-
     public GameObject hitEffect;
     public GameObject bulletImpact;
 
     private Animator anim;
-
     private bool isReloading;
-
-    public AudioClip shootSound;
-    private AudioSource audioSource;
-
-    public int damage;
 
     public enum ShootMode
     {
@@ -36,12 +31,25 @@ public class Weapon : MonoBehaviour
     public ShootMode shootMode;
     private bool shootInput;
 
+    [Header("Sounds")]
+    public AudioClip shootSound;
+    private AudioSource audioSource;
+
+    [Header("Aim")]
+    public Vector3 aimPos;
+    public float aimSpeed;
+    private Vector3 originalPos;
+
+
+
 
     void Start()
     {
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
         currentBullets = totalBullets;
+        originalPos = transform.localPosition;
     }
 
 
@@ -94,6 +102,8 @@ public class Weapon : MonoBehaviour
         {
             firetimer += Time.deltaTime;
         }
+
+        ToAim();
     }
 
     //
@@ -127,6 +137,19 @@ public class Weapon : MonoBehaviour
         PlayShootSound();
         currentBullets--;
         firetimer = 0f;
+    }
+
+    //
+    public void ToAim()
+    {
+        if (Input.GetButton("Fire2") && !isReloading)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, aimPos, Time.deltaTime * aimSpeed);
+        }
+        else
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, originalPos, Time.deltaTime * aimSpeed);
+        }
     }
 
     //
