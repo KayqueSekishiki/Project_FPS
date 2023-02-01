@@ -19,10 +19,14 @@ public class Weapon : MonoBehaviour
 
     private bool isReloading;
 
+    public AudioClip shootSound;
+    private AudioSource audioSource;
+
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         currentBullets = totalBullets;
     }
 
@@ -71,6 +75,7 @@ public class Weapon : MonoBehaviour
 
         anim.CrossFadeInFixedTime("Fire", 0.01f);
         fireEffect.Play();
+        PlayShootSound();
         currentBullets--;
         firetimer = 0f;
     }
@@ -103,5 +108,10 @@ public class Weapon : MonoBehaviour
 
         bulletsLeft -= bulletsToDeduct;
         currentBullets += bulletsToDeduct;
+    }
+
+    void PlayShootSound()
+    {
+        audioSource.PlayOneShot(shootSound);
     }
 }
