@@ -25,6 +25,8 @@ public class Weapon : MonoBehaviour
     public AudioClip shootSound;
     private AudioSource audioSource;
 
+    public int damage;
+
     public enum ShootMode
     {
         Auto,
@@ -94,6 +96,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    //
     private void Fire()
     {
         if (firetimer < fireRate)
@@ -108,8 +111,15 @@ public class Weapon : MonoBehaviour
             // Debug.Log(hit.transform.name);
             GameObject hitParticle = Instantiate(hitEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
             GameObject bullet = Instantiate(bulletImpact, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
+            bullet.transform.SetParent(hit.transform);
+
             Destroy(hitParticle, 1f);
             Destroy(bullet, 10f);
+
+            if (hit.transform.GetComponent<ObjectHealth>())
+            {
+                hit.transform.GetComponent<ObjectHealth>().ApplyDamage(damage);
+            }
         }
 
         anim.CrossFadeInFixedTime("Fire", 0.01f);
@@ -119,12 +129,14 @@ public class Weapon : MonoBehaviour
         firetimer = 0f;
     }
 
+    //
     private void FixedUpdate()
     {
         AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
         isReloading = info.IsName("Reload");
     }
 
+    //
     private void DoReload()
     {
         if (isReloading)
@@ -135,6 +147,7 @@ public class Weapon : MonoBehaviour
         anim.CrossFadeInFixedTime("Reload", 0.01f);
     }
 
+    //
     public void Reload()
     {
         if (bulletsLeft <= 0)
@@ -148,7 +161,7 @@ public class Weapon : MonoBehaviour
         bulletsLeft -= bulletsToDeduct;
         currentBullets += bulletsToDeduct;
     }
-
+    //
     void PlayShootSound()
     {
         audioSource.PlayOneShot(shootSound);
