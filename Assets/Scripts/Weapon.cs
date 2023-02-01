@@ -25,6 +25,15 @@ public class Weapon : MonoBehaviour
     public AudioClip shootSound;
     private AudioSource audioSource;
 
+    public enum ShootMode
+    {
+        Auto,
+        Semi
+    }
+
+    public ShootMode shootMode;
+    private bool shootInput;
+
 
     void Start()
     {
@@ -36,7 +45,30 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        //if (Input.GetButton("Fire1"))
+        //{
+        //    if (currentBullets > 0)
+        //    {
+        //        Fire();
+        //    }
+        //    else if (bulletsLeft > 0)
+        //    {
+        //        DoReload();
+        //    }
+        //}
+
+        switch (shootMode)
+        {
+            case ShootMode.Auto:
+                shootInput = Input.GetButton("Fire1");
+                break;
+
+            case ShootMode.Semi:
+                shootInput = Input.GetButtonDown("Fire1");
+                break;
+        }
+
+        if (shootInput)
         {
             if (currentBullets > 0)
             {
