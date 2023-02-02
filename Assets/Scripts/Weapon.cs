@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -41,8 +42,14 @@ public class Weapon : MonoBehaviour
     public float aimSpeed;
     private Vector3 originalPos;
 
+    [Header("UI")]
+    public Text ammoText;
 
 
+    private void OnEnable()
+    {
+        UpdateAmmoText();
+    }
 
     void Start()
     {
@@ -51,6 +58,8 @@ public class Weapon : MonoBehaviour
 
         currentBullets = totalBullets;
         originalPos = transform.localPosition;
+
+        UpdateAmmoText();
     }
 
 
@@ -139,6 +148,7 @@ public class Weapon : MonoBehaviour
         anim.CrossFadeInFixedTime("Fire", 0.01f);
         fireEffect.Play();
         PlayShootSound();
+        UpdateAmmoText();
         currentBullets--;
         firetimer = 0f;
     }
@@ -172,6 +182,7 @@ public class Weapon : MonoBehaviour
         }
 
         anim.CrossFadeInFixedTime("Reload", 0.01f);
+        UpdateAmmoText();
     }
 
     //
@@ -187,10 +198,16 @@ public class Weapon : MonoBehaviour
 
         bulletsLeft -= bulletsToDeduct;
         currentBullets += bulletsToDeduct;
+        UpdateAmmoText();
     }
     //
     void PlayShootSound()
     {
         audioSource.PlayOneShot(shootSound);
+    }
+
+    void UpdateAmmoText()
+    {
+        ammoText.text = currentBullets + "/" + bulletsLeft;
     }
 }
