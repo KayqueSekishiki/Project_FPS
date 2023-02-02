@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     public int bulletsLeft = 100;
     public int currentBullets;
     public float fireRate = 1f;
+    public float spreadFactor;
     private float firetimer;
 
     [Header("Shoot Config")]
@@ -116,7 +117,10 @@ public class Weapon : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(shootPoint.position, shootPoint.transform.forward, out hit, range))
+        Vector3 shootDirection = shootPoint.transform.forward;
+        shootDirection = shootDirection + shootPoint.TransformDirection(new Vector3(Random.Range(-spreadFactor, spreadFactor), Random.Range(-spreadFactor, spreadFactor)));
+
+        if (Physics.Raycast(shootPoint.position, shootDirection, out hit, range))
         {
             // Debug.Log(hit.transform.name);
             GameObject hitParticle = Instantiate(hitEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));

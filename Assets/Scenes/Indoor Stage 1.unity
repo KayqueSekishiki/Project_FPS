@@ -661,7 +661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &807031386
 Transform:
   m_ObjectHideFlags: 0
@@ -1855,6 +1855,10 @@ PrefabInstance:
       propertyPath: shootPoint
       value: 
       objectReference: {fileID: 932392283}
+    - target: {fileID: 1215666750694518057, guid: 139782f903e61744882dc7bfc33557ec, type: 3}
+      propertyPath: spreadFactor
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 8524518397065798855, guid: 139782f903e61744882dc7bfc33557ec, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1970,12 +1974,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1371519405912971583, guid: f2b9e647139fbe1408a9a91fb6962dce, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8474467777426296049, guid: f2b9e647139fbe1408a9a91fb6962dce, type: 3}
       propertyPath: shootPoint
       value: 
       objectReference: {fileID: 932392283}
+    - target: {fileID: 8474467777426296049, guid: f2b9e647139fbe1408a9a91fb6962dce, type: 3}
+      propertyPath: spreadFactor
+      value: 0.03
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2b9e647139fbe1408a9a91fb6962dce, type: 3}
 --- !u!1 &8474467777426296048 stripped

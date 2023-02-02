@@ -225,9 +225,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 76a7faff
-      m_LastClickedID: -350346
-      m_ExpandedIDs: 76a7faff24aefaff2aaefaff2caefaff247efbffe2bdfdffb0fffdff6ed6feff48fefeffb4fefeff8289ffff8689ffff2e91ffff6099ffff60aaffff6caaffffcad4ffff5cefffffe8f2ffff32fbffff
+      m_SelectedIDs: 2caefaff
+      m_LastClickedID: -348628
+      m_ExpandedIDs: 24aefaff2aaefaff247efbffe2bdfdffb0fffdff6ed6feff48fefeffb4fefeff8289ffff8689ffff2e91ffff6099ffff60aaffff6caaffffcad4ffff5cefffffe8f2ffffa8f7ffff32fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -536,9 +536,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.4507256, y: -0.21579891, z: -9.418172}
+    m_Target: {x: 7.7821274, y: -1.8669541, z: -9.9995985}
     speed: 2
-    m_Value: {x: 5.4507256, y: -0.21579891, z: -9.418172}
+    m_Value: {x: 7.7821274, y: -1.8669541, z: -9.9995985}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -585,13 +585,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.30211684, y: 0.073788494, z: -0.023278756, w: 0.9502605}
+    m_Target: {x: 0.33528796, y: 0.42130807, z: -0.17096318, w: 0.8252951}
     speed: 2
-    m_Value: {x: -0.30211687, y: -0.073788494, z: 0.023278756, w: -0.9502605}
+    m_Value: {x: 0.33524457, y: 0.42125353, z: -0.17094105, w: 0.8251883}
   m_Size:
-    m_Target: 1.3665078
+    m_Target: 2.4100552
     speed: 2
-    m_Value: 1.3665078
+    m_Value: 2.4100552
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 53246
+  controlID: 53408
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -798,21 +798,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/NotSecret/AssetsFPS/Weapons/Modern Weapons Pack/UMP-45/FBX
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/NotSecret/AssetsFPS/Weapons/Modern Weapons Pack/UMP-45/FBX
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Kaique2\Desktop\Projetos de Jogos\Project_FPS
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 80}
-    m_SelectedIDs: dcf70a00
-    m_LastClickedID: 718812
+    scrollPos: {x: 0, y: 480}
+    m_SelectedIDs: 16aa0000
+    m_LastClickedID: 43542
     m_ExpandedIDs: 00000000f8a4000058a700007ea7000082a7000086a700008ea7000092a70000aaa80000c0a8000084a9000094a9000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -866,9 +866,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 76a7faff
-    m_LastClickedInstanceID: -350346
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 2caefaff
+    m_LastClickedInstanceID: -348628
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300002c9e0300
     m_RenameOverlay:
       m_UserAcceptedRename: 0
