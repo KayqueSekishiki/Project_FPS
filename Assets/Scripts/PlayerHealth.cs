@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
     public float recoveryRate;
     private float recoveryTimer;
 
+    public bool isDead = false;
+
 
     private void Start()
     {
@@ -47,7 +49,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            Debug.Log("Game Over!");
+            GameController.GC.ShowGameOver();
+            isDead = true;
         }
 
         recoveryTimer = 0f;

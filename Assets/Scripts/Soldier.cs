@@ -11,6 +11,7 @@ public class Soldier : MonoBehaviour
     public ParticleSystem fireEffect;
 
     private GameObject Player;
+    private PlayerHealth playerHealth;
 
     public float atkDistance = 10f;
     public float followDistance = 20f;
@@ -37,12 +38,13 @@ public class Soldier : MonoBehaviour
         navMesh = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = Player.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (navMesh.enabled)
+        if (navMesh.enabled && !playerHealth.isDead)
         {
             float dist = Vector3.Distance(Player.transform.position, transform.position);
             bool shoot = false;
@@ -55,15 +57,16 @@ public class Soldier : MonoBehaviour
                     shoot = true;
                     Fire();
                 }
-                navMesh.SetDestination(Player.transform.position);
-                transform.LookAt(Player.transform);
                 //  navMesh.isStopped = false;
+                navMesh.SetDestination(Player.transform.position);
+                transform.LookAt(new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z));
+                shootPoint.LookAt(Player.transform);
             }
 
             if (!follow || shoot)
             {
-                navMesh.SetDestination(transform.position);
                 //  navMesh.isStopped = true;
+                navMesh.SetDestination(transform.position);
             }
             anim.SetBool("shoot", shoot);
             anim.SetBool("run", follow);
