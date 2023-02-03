@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class reload : StateMachineBehaviour
+public class Reload : StateMachineBehaviour
 {
 
     public float reloadTime = 0.7f;

@@ -12,7 +12,7 @@ public class WeaponManager : MonoBehaviour
 
     void Start()
     {
-        initializeWeapons();
+        InitializeWeapons();
     }
 
     // 
@@ -27,7 +27,7 @@ public class WeaponManager : MonoBehaviour
                 index = 0;
             }
 
-            StartCoroutine(switchWeaponDelay(index));
+            StartCoroutine(SwitchWeaponDelay(index));
 
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !isSwitching)
@@ -38,11 +38,11 @@ public class WeaponManager : MonoBehaviour
                 index = weapons.Length - 1;
             }
 
-            StartCoroutine(switchWeaponDelay(index));
+            StartCoroutine(SwitchWeaponDelay(index));
         }
     }
 
-    IEnumerator switchWeaponDelay(int newIndex)
+    IEnumerator SwitchWeaponDelay(int newIndex)
     {
         isSwitching = true;
         yield return new WaitForSeconds(switchDelay);
@@ -51,7 +51,7 @@ public class WeaponManager : MonoBehaviour
     }
 
     //
-    void initializeWeapons()
+    void InitializeWeapons()
     {
         for (int i = 0; i < weapons.Length; i++)
         {

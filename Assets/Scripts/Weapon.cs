@@ -124,12 +124,10 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        RaycastHit hit;
-
         Vector3 shootDirection = shootPoint.transform.forward;
         shootDirection = shootDirection + shootPoint.TransformDirection(new Vector3(Random.Range(-spreadFactor, spreadFactor), Random.Range(-spreadFactor, spreadFactor)));
 
-        if (Physics.Raycast(shootPoint.position, shootDirection, out hit, range))
+        if (Physics.Raycast(shootPoint.position, shootDirection, out RaycastHit hit, range))
         {
             // Debug.Log(hit.transform.name);
             GameObject hitParticle = Instantiate(hitEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
@@ -142,6 +140,11 @@ public class Weapon : MonoBehaviour
             if (hit.transform.GetComponent<ObjectHealth>())
             {
                 hit.transform.GetComponent<ObjectHealth>().ApplyDamage(damage);
+            }
+
+            if (hit.transform.GetComponent<Soldier>())
+            {
+                hit.transform.GetComponent<Soldier>().ApplyDamage(damage);
             }
         }
 
