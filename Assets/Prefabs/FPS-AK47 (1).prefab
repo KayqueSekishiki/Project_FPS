@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1532327378}
   m_Layer: 0
-  m_Name: ShotPoint
+  m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -467,7 +467,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371519405912971557}
-  m_LocalRotation: {x: 0.71290493, y: -0.6522448, z: 0.22442584, w: 0.12639742}
+  m_LocalRotation: {x: 0.712905, y: -0.6522448, z: 0.22442585, w: 0.12639742}
   m_LocalPosition: {x: 0.00000001013279, y: 0.000000009536743, z: -1.11758706e-10}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
@@ -976,9 +976,10 @@ MonoBehaviour:
   damage: 35
   range: 100
   totalBullets: 30
-  bulletsLeft: 100
+  bulletsLeft: 90
   currentBullets: 0
-  fireRate: 0.1
+  fireRate: 0.25
+  spreadFactor: 0.03
   shootPoint: {fileID: 0}
   fireEffect: {fileID: 7391469294843605124}
   hitEffect: {fileID: 1617700753897852, guid: 4dcc47d504b478e4f945cc1114a115e2, type: 3}
@@ -987,6 +988,7 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: a7ea6f97142ba124c9e2bda673c1d541, type: 3}
   aimPos: {x: -0.163, y: -1.496, z: 0}
   aimSpeed: 6
+  ammoText: {fileID: 0}
 --- !u!1 &1371519405912971585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,7 +2238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
       propertyPath: lengthInSec
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
       propertyPath: ShapeModule.type
@@ -2283,6 +2285,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -2305,7 +2311,7 @@ PrefabInstance:
     - target: {fileID: 19900004, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9f3080141f1f64197825663e067f94f8, type: 2}
+      objectReference: {fileID: 2100000, guid: c10b1630d5621ec48a17223c3c102023, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
 --- !u!4 &7391469294828402118 stripped

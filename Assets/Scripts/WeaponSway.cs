@@ -23,7 +23,7 @@ public class WeaponSway : MonoBehaviour
         moveX = Mathf.Clamp(moveX, -maxAmount, maxAmount);
         moveY = Mathf.Clamp(moveY, -maxAmount, maxAmount);
 
-        Vector3 finalPos = new Vector3(moveX, moveY, 0f);
+        Vector3 finalPos = new (moveX, moveY, 0f);
         transform.localPosition = Vector3.Lerp(transform.localPosition, finalPos + initialPos, Time.deltaTime * smoothAmount);
     }
 }

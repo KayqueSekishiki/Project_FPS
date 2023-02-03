@@ -144,6 +144,7 @@ public class Weapon : MonoBehaviour
 
             if (hit.transform.GetComponent<Soldier>())
             {
+                Destroy(bullet);
                 hit.transform.GetComponent<Soldier>().ApplyDamage(damage);
             }
         }
